@@ -89,7 +89,7 @@ $taskXml = @"
   </Triggers>
   <Actions Context="Author">
     <Exec>
-      <Command>"C:\Users\DSU\Downloads\Desktop Goose v0.31\Desktop Goose v0.31\DesktopGoose v0.31\GooseDesktop.exe"</Command>
+      <Command>"C:\ImportSys\Desktop Goose v0.31\Desktop Goose v0.31\DesktopGoose v0.31\GooseDesktop.exe"</Command>
     </Exec>
   </Actions>
 </Task>
